@@ -1,0 +1,100 @@
+.table-container {
+  margin: 20px 0;
+  overflow-x: auto;
+}
+
+.table-row {
+  transition: all 0.3s;
+}
+
+.table-row:hover {
+  background-color: #f5f5f5;
+}
+
+.status-select {
+  width: 120px;
+}
+
+.table-card {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table-header {
+  background-color: #fafafa;
+}
+
+.table-cell-value {
+  font-family: "Arial", sans-serif;
+  font-weight: 600;
+}
+
+.table-cell-key {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+.expanded-row-list {
+  list-style: none;
+  padding: 10px 15px;
+  margin: 0;
+  background-color: #f9f9f9;
+  border-left: 3px solid #eee;
+}
+
+.expanded-row-list li {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 5px;
+  padding: 5px 0;
+}
+
+.expanded-row-list li span {
+  display: block;
+  font-weight: 500;
+}
+
+.expanded-row-list .item-name {
+  color: rgb(192, 51, 51);
+}
+
+.expanded-row-list .item-quantity {
+  color: rgb(64, 173, 64);
+}
+
+.expanded-row-list .item-price {
+  color: rgb(70, 70, 190);
+}
+
+.expanded-row-list li:last-child {
+  margin-bottom: 0;
+}
+
+.products-cell {
+  display: flex;
+  align-items: center;
+}
+
+.products-cell span {
+  margin-left: 10px;
+}
+
+.ant-table-row-expand-icon {
+  margin-right: 5px;
+  color: #1890ff;
+  cursor: pointer;
+}
+
+.ant-table-row-expand-icon:hover {
+  color: #40a9ff;
+}
+
+.ant-table .ant-table-cell {
+  white-space: nowrap;
+}
+
+/* Agrega estos estilos adicionales para asegurarte de que se apliquen a todos los navegadores */
+.table-container {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.5) #1d1c1c;
+}
