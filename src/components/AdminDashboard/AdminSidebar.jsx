@@ -4,6 +4,7 @@ import { AppstoreOutlined, ShopOutlined, UserOutlined, OrderedListOutlined, Mail
 import { useNavigate } from 'react-router-dom';
 import { LogoStyles, RouteSection } from './DashboardStyles';
 import NotificationComponent from '../../pages/Dashboard/Notificaciones/NotificationComponent';
+import PropTypes from 'prop-types';
 
 const { Sider } = Layout;
 
@@ -62,5 +63,12 @@ const AdminSidebar = ({ collapsed, onCollapse }) => {
     </Sider>
   );
 };
+
+
+//PropsTypes
+ AdminSidebar.propTypes = {
+   collapsed: PropTypes.bool.isRequired,
+   onCollapse: PropTypes.func.isRequired,
+ };
 
 export default AdminSidebar;

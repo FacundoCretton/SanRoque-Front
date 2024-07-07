@@ -55,7 +55,6 @@ const DashboardPanel = () => {
 
   return (
     <div>
-      <h2>Dashboard Panel</h2>
       <Space direction="horizontal">
         <DashboardCard
           icon={<ShoppingCartOutlined style={{ color: 'orange', backgroundColor: 'rgba(255, 255,0,0.25)', borderRadius: '15px', padding: '4px', fontSize: '20px' }}/>}

@@ -132,7 +132,6 @@ const DashboardProducts = () => {
 
     return (
         <div>
-            <h1>Dashboard Products</h1>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
                 <Search placeholder="Buscar productos" onChange={handleSearch} style={{ width: 200 }} />
                 <Button type="primary" onClick={showAddModal}>
