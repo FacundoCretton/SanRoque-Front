@@ -1,4 +1,3 @@
-// vite.config.js
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 
@@ -8,9 +7,9 @@ export default defineConfig({
     include: ['react', 'react-dom'],
   },
   esbuild: {
-    loader: 'jsx', // Cargar archivos `.js` como `.jsx`
+    loader: 'jsx',
     include: [
-      'src/**/*.js', // Incluir todos los archivos `.js` en `src`
+      'src/**/*.jsx', // Incluir todos los archivos `.jsx` en `src`
     ],
     exclude: [],
   },
