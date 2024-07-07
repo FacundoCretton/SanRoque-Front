@@ -40,7 +40,7 @@ export const GlobalStyles = createGlobalStyle`
 }   
 
 .my-dashboard-layout.ant-layout.ant-layout-has-sider {
-    flex-direction: column !important; /* Ajuste a columna para mejor manejo del espacio */
+    flex-direction: column !important; 
 }
 `;
 
