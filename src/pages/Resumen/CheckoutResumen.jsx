@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ProductsCheckout from '../../components/Checkout/Products/ProductsCheckout';
 import { ResumenContainer } from './Resumen';
 import { clearCart } from '../../redux/cart/cartSlide';
+import { BASE_URL } from '../../utils/constants';
 
 const CheckoutResumen = () => {
   const [preferenceId, setPreferenceId] = useState(null);
@@ -38,7 +39,7 @@ const CheckoutResumen = () => {
       }));
 
       // Realizar la solicitud a Mercado Pago para crear la preferencia
-      const response = await axios.post("http://localhost:8080/api/mercadoPago/create_preference",
+      const response = await axios.post(`${BASE_URL}/api/mercadoPago/create_preference`,
         {
           items, shippingCost
         }

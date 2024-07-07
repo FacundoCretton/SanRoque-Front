@@ -6,6 +6,7 @@ import DashboardCard from './DashboardPanelCard';
 import RecentOrders from './RecentOrders';
 import { calculateMonthlySales, countUniqueClients, calculateInventory } from './calculations';
 import './styles.css';
+import { BASE_URL } from '../../../../utils/constants';
 
 const DashboardPanel = () => {
   const [orders, setOrders] = useState([]);
@@ -14,7 +15,7 @@ const DashboardPanel = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/orders');
+        const response = await axios.get(`${BASE_URL}/api/orders`);
         setOrders(response.data);
       } catch (error) {
         console.error('Error al obtener las órdenes:', error);
@@ -26,7 +27,7 @@ const DashboardPanel = () => {
 
   const handleStatusChange = async (orderId, newStatus) => {
     try {
-      await axios.put(`http://localhost:8080/api/orders/${orderId}`, { status: newStatus });
+      await axios.put(`${BASE_URL}/api/orders/${orderId}`, { status: newStatus });
       setOrders(prevOrders =>
         prevOrders.map(order => (order.id === orderId ? { ...order, status: newStatus } : order))
       );

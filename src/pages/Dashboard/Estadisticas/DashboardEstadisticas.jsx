@@ -6,6 +6,7 @@ import SalesChart from './SalesChart';
 import TopProductsChart from './TopProductsChart';
 import OrdersLineChart from './OrdersLineChart';
 import { DashboardContainer, ControlPanel, CustomCard } from './DashboardEstadisticasStyles';
+import { BASE_URL } from '../../../utils/constants';
 
 const DashboardEstadisticas = () => {
   const [orders, setOrders] = useState([]);
@@ -13,7 +14,7 @@ const DashboardEstadisticas = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/orders');
+        const response = await axios.get(`${BASE_URL}/api/orders`);
         setOrders(response.data);
       } catch (error) {
         console.error('Error al obtener las órdenes:', error);

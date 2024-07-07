@@ -7,6 +7,7 @@ import ProductsCheckout from '../../components/Checkout/Products/ProductsCheckou
 import { ContainerCheckoutStyled, FormContainerStyled, SummaryContainerStyled } from './CheckoutStyles';
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
 import { clearCart } from '../../redux/cart/cartSlide.js';
+import { BASE_URL } from '../../utils/constants.js';
 
 const Checkout = () => {
   const { cartItems, shippingCost } = useSelector(state => state.cart);
@@ -38,7 +39,7 @@ const Checkout = () => {
       };
 
       // Primero creamos la orden en el backend
-      const response = await axios.post("http://localhost:8080/api/orders", orderData);
+      const response = await axios.post(`${BASE_URL}/api/orders`, orderData);
       if (response.data && response.data.id) {
         setOrderId(response.data.id); // Guardamos el ID de la orden
         const id = await createPreference(cartItems, shippingCost, response.data.id); // Pasamos el ID de la orden a la preferencia
@@ -60,7 +61,7 @@ const Checkout = () => {
         unit_price: item.price,
       }));
 
-      const response = await axios.post("http://localhost:8080/api/mercadoPago/create_preference", {
+      const response = await axios.post(`${BASE_URL}/api/mercadoPago/create_preference`, {
         items,
         shippingCost,
         orderId,

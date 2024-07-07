@@ -1,23 +1,24 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { BASE_URL } from '../../utils/constants';
 
 export const fetchApiProducts = createAsyncThunk('apiProducts/fetchApiProducts', async () => {
-    const response = await axios.get('http://localhost:8080/api/products');
+    const response = await axios.get(`${BASE_URL}/api/products`);
     return response.data;
 });
 
 export const addApiProduct = createAsyncThunk('apiProducts/addApiProduct', async (newProduct) => {
-    const response = await axios.post('http://localhost:8080/api/products', newProduct);
+    const response = await axios.post(`${BASE_URL}/api/products`, newProduct);
     return response.data;
 });
 
 export const updateApiProduct = createAsyncThunk('apiProducts/updateApiProduct', async ({ id, updatedProduct }) => {
-    const response = await axios.put(`http://localhost:8080/api/products/${id}`, updatedProduct);
+    const response = await axios.put(`${BASE_URL}/api/products/${id}`, updatedProduct);
     return response.data;
 });
 
 export const deleteApiProduct = createAsyncThunk('apiProducts/deleteApiProduct', async (id) => {
-    await axios.delete(`http://localhost:8080/api/products/${id}`);
+    await axios.delete(`${BASE_URL}/api/products/${id}`);
     return id;
 });
 

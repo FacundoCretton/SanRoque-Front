@@ -3,6 +3,7 @@ import { Badge, Popover, List, Button } from 'antd';
 import { BellFilled } from '@ant-design/icons';
 import axios from 'axios';
 import './NotificationStyles.css';
+import { BASE_URL } from '../../../utils/constants';
 
 const NotificationComponent = () => {
   const [notifications, setNotifications] = useState([]);
@@ -11,8 +12,8 @@ const NotificationComponent = () => {
   const fetchNotifications = async () => {
     try {
       const [ordersResponse, productsResponse] = await Promise.all([
-        axios.get('http://localhost:8080/api/orders'),
-        axios.get('http://localhost:8080/api/products')
+        axios.get(`${BASE_URL}/api/orders`),
+        axios.get(`${BASE_URL}/api/products`)
       ]);
 
       const orders = ordersResponse.data;
