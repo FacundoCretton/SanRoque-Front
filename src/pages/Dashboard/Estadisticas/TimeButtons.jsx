@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
+import PropTypes from 'prop-types';
 
 const TimeButtons = ({ timeRange, onTimeChange }) => (
   <div style={{ marginBottom: 10 }}>
@@ -10,4 +11,13 @@ const TimeButtons = ({ timeRange, onTimeChange }) => (
   </div>
 );
 
+// Proptypes:
+
+TimeButtons.propTypes = {
+  timeRange: PropTypes.string.isRequired,
+  onTimeChange: PropTypes.func.isRequired,
+};
+
+
 export default TimeButtons;
+

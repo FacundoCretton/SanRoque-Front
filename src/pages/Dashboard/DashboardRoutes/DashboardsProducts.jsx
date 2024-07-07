@@ -10,8 +10,8 @@ const DashboardProducts = () => {
     const dispatch = useDispatch();
     const apiProducts = useSelector((state) => state.apiProducts.items);
     const [filteredProducts, setFilteredProducts] = useState([]);
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const [isEditModalVisible, setIsEditModalVisible] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [editingProduct, setEditingProduct] = useState(null);
     const [form] = Form.useForm();
 
@@ -38,7 +38,7 @@ const DashboardProducts = () => {
                 message: "Producto agregado",
                 description: "El producto ha sido agregado exitosamente."
             });
-            setIsModalVisible(false);
+            setIsModalOpen(false);
             form.resetFields();
         } catch (error) {
             console.error("Error al agregar el producto:", error);
@@ -62,7 +62,7 @@ const DashboardProducts = () => {
                 message: "Producto actualizado",
                 description: "El producto ha sido actualizado exitosamente."
             });
-            setIsEditModalVisible(false);
+            setIsEditModalOpen(false);
             form.resetFields();
             setEditingProduct(null);
         } catch (error) {
@@ -91,7 +91,7 @@ const DashboardProducts = () => {
     };
 
     const showAddModal = () => {
-        setIsModalVisible(true);
+        setIsModalOpen(true);
     };
 
     const showEditModal = (product) => {
@@ -100,12 +100,12 @@ const DashboardProducts = () => {
             ...product,
             beneficios: product.beneficios ? product.beneficios.join(', ') : ''
         });
-        setIsEditModalVisible(true);
+        setIsEditModalOpen(true);
     };
 
     const handleCancel = () => {
-        setIsModalVisible(false);
-        setIsEditModalVisible(false);
+        setIsModalOpen(false);
+        setIsEditModalOpen(false);
         form.resetFields();
         setEditingProduct(null);
     };
@@ -143,19 +143,19 @@ const DashboardProducts = () => {
 
             <Modal
                 title="Agregar Producto"
-                visible={isModalVisible}
+                open={isModalOpen}
                 onCancel={handleCancel}
                 footer={null}
             >
                 <AddProductForm
-                    setIsModalVisible={setIsModalVisible}
+                    setIsModalOpen={setIsModalOpen}
                     handleAddProduct={handleAddProduct}
                 />
             </Modal>
 
             <Modal
                 title="Editar Producto"
-                visible={isEditModalVisible}
+                open={isEditModalOpen}
                 onCancel={handleCancel}
                 footer={null}
             >

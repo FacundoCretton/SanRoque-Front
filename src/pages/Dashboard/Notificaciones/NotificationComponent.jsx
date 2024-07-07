@@ -120,7 +120,7 @@ const NotificationComponent = () => {
       title="Notificaciones"
       content={notificationContent}
       trigger="click"
-      onVisibleChange={handlePopoverVisibleChange}
+      onOpenChange={handlePopoverVisibleChange}
     >
       <Badge count={unreadCount} dot={unreadCount > 0} style={{ fontSize: 10 }}>
         <BellFilled style={{ fontSize: 24 }} />

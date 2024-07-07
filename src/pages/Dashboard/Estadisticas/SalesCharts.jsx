@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import 'chartjs-adapter-date-fns';
-import { es } from 'date-fns/locale';
 import TimeButtons from './TimeButtons';
+import PropTypes from 'prop-types';
 
 Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -20,10 +20,11 @@ const SalesChart = ({ orders }) => {
     let filtered = [];
 
     switch (range) {
-      case 'daily':
+      case 'daily': {
         filtered = orders.filter(order => new Date(order.date).toDateString() === now.toDateString());
         break;
-      case 'weekly':
+      }
+      case 'weekly': {
         const weekStart = new Date(now);
         weekStart.setDate(now.getDate() - now.getDay());
         filtered = orders.filter(order => {
@@ -31,20 +32,23 @@ const SalesChart = ({ orders }) => {
           return orderDate >= weekStart && orderDate <= now;
         });
         break;
-      case 'monthly':
+      }
+      case 'monthly': {
         const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
         filtered = orders.filter(order => {
           const orderDate = new Date(order.date);
           return orderDate >= monthStart && orderDate <= now;
         });
         break;
-      case 'yearly':
+      }
+      case 'yearly': {
         const yearStart = new Date(now.getFullYear(), 0, 1);
         filtered = orders.filter(order => {
           const orderDate = new Date(order.date);
           return orderDate >= yearStart && orderDate <= now;
         });
         break;
+      }
       default:
         filtered = orders;
     }
@@ -57,7 +61,7 @@ const SalesChart = ({ orders }) => {
     const now = new Date();
   
     switch (range) {
-      case 'daily':
+      case 'daily': {
         for (let i = 0; i < 24; i++) {
           data.push({ label: `${i}:00`, value: 0 });
         }
@@ -66,7 +70,8 @@ const SalesChart = ({ orders }) => {
           data[orderHour].value += order.totalPrice;
         });
         break;
-      case 'weekly':
+      }
+      case 'weekly': {
         for (let i = 0; i < 7; i++) {
           const date = new Date(now);
           date.setDate(now.getDate() - now.getDay() + i);
@@ -77,7 +82,8 @@ const SalesChart = ({ orders }) => {
           data[orderDay].value += order.totalPrice;
         });
         break;
-      case 'monthly':
+      }
+      case 'monthly': {
         const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
         for (let i = 1; i <= daysInMonth; i++) {
           data.push({ label: i, value: 0 });
@@ -87,7 +93,8 @@ const SalesChart = ({ orders }) => {
           data[orderDate - 1].value += order.totalPrice;
         });
         break;
-      case 'yearly':
+      }
+      case 'yearly': {
         for (let i = 0; i < 12; i++) {
           data.push({ label: new Date(now.getFullYear(), i).toLocaleString('es-ES', { month: 'short' }), value: 0 });
         }
@@ -96,6 +103,7 @@ const SalesChart = ({ orders }) => {
           data[orderMonth].value += order.totalPrice;
         });
         break;
+      }
       default:
         break;
     }
@@ -133,6 +141,10 @@ const SalesChart = ({ orders }) => {
       />
     </div>
   );
+};
+
+SalesChart.propTypes = {
+  orders: PropTypes.array.isRequired,
 };
 
 export default SalesChart;

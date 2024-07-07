@@ -3,6 +3,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { anticipate } from "framer-motion";
 
 
 export const GlobalStyles = createGlobalStyle`
@@ -32,11 +33,14 @@ export const GlobalStyles = createGlobalStyle`
     li {
     list-style: none;
     }
-    :where(.css-dev-only-do-not-override-1rqnfsa).ant-layout.ant-layout-has-sider {
+   
+ 
+ :where(.css-dev-only-do-not-override-1rqnfsa).ant-layout.ant-layout-has-sider {
     flex-direction: column !important; /* Asegurando que el diseño se mantenga en fila */
-}
+}   
 
 .my-dashboard-layout.ant-layout.ant-layout-has-sider {
     flex-direction: column !important; /* Ajuste a columna para mejor manejo del espacio */
 }
 `;
+

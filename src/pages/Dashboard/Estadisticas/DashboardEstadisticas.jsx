@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Space, Row, Col, Card } from 'antd';
 import SalesStatistics from './SalesStatistics';
-import SalesChart from './SalesChart';
+import SalesChart from './SalesCharts';
 import TopProductsChart from './TopProductsChart';
 import OrdersLineChart from './OrdersLineChart';
 import { DashboardContainer, ControlPanel, CustomCard } from './DashboardEstadisticasStyles';

@@ -8,6 +8,8 @@ const { Sider } = Layout;
 export const SidebarAndDashboard = styled(Layout)`
   display: flex;
   height: 100%;
+  flex-direction: column !important;
+
 `;
 
 export const SidebarAdminStyles = styled(Sider)`
@@ -27,6 +29,8 @@ export const SidebarAdminStyles = styled(Sider)`
   .ant-menu-item:hover {
     background-color: #40a9ff;
   }
+
+  
 `;
 
 export const IconSection = styled.div`
@@ -52,6 +56,9 @@ export const RouteSection = styled.div`
 export const PageContentStyles = styled(Layout.Content)`
   padding: 20px;
   background: #f0f2f5;
+
+  
+  
 `;
 
 export const HeaderAdminStyles = styled(Layout.Header)`
